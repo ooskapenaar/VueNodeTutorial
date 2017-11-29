@@ -7,9 +7,9 @@ const express = require('express'),
       itemRoutes = require('./expressRoutes/itemRoutes');
 
       mongoose.Promise = global.Promise;
-      mongoose.connect(config.DB).then(
-          () => {console.log('Database is connected') },
-          err => { console.log('Can not connect to the database'+ err)}
+      mongoose.connect(config.DB,{useMongoClient:true}).then(
+          () => {console.log(`${config.DB}    connected`) },
+          err => { console.log(`${config.DB}    connection failed  ${err}`)}
         );
 
       const app = express();
@@ -20,5 +20,5 @@ const express = require('express'),
       const port = process.env.PORT || 4000;
 
       const server = app.listen(port, function(){
-        console.log('Listening on port ' + port);
+        console.log(`Listening on port ${port}`);
       });
