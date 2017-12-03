@@ -19,7 +19,7 @@ itemRoutes.route('/add').post(function (req, res) {
 
 // Defined get data(index or listing) route
 itemRoutes.route('/').get(function (req, res) {
-  Item.find(function (err, items){
+  Item.find({},{},{sort:{name:1}},function (err, items){
     if(err){
       console.log(err);
     }
@@ -38,23 +38,17 @@ itemRoutes.route('/edit/:id').get(function (req, res) {
 });
 
 //  Defined update route
-itemRoutes.route('/update/:id').post(function (req, res) {
-  Item.findById(req.params.id, function(err, item) {
-    if (!item)
-      return next(new Error('Could not load Document'));
-    else {
-      item.name = req.body.name;
-      item.price = req.body.price;
+itemRoutes.route( '/update/:id' ).post( function( req, res ) {
+    var item = req.body;
 
-      item.save().then(item => {
-          res.json('Update complete');
-      })
-      .catch(err => {
-            res.status(400).send("unable to update the database");
-      });
-    }
-  });
-});
+    Item.update( {_id: req.params.id}, item, {runValidators: true}, function( err, result ) {
+        if( !err ) {
+            res.json( 'Update complete' );
+        } else {
+            res.json( err );
+        }
+    } );
+} );
 
 // Defined delete | remove | destroy route
 itemRoutes.route('/delete/:id').get(function (req, res) {

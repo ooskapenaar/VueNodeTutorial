@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h1>Items</h1>
+        <h1>Items Collection</h1>
 
         <div class="row">
           <div class="col-md-10"></div>
@@ -15,6 +15,11 @@
                 <td>ID</td>
                 <td>Item Name</td>
                 <td>Item Price</td>
+                <td>Type</td>
+                <td>Assv. Ref</td>
+                <td>PZN</td>
+                <td>Ingredients</td>
+                <td>Dose</td>
                 <td>Actions</td>
             </tr>
             </thead>
@@ -24,6 +29,11 @@
                     <td>{{ item._id }}</td>
                     <td>{{ item.name }}</td>
                     <td>{{ item.price }}</td>
+                    <td>{{ item.type }} </td>
+                    <td>{{ item.assistiveReference }} </td>
+                    <td>{{ item.medicationPznNumber }} </td>
+                    <td>{{ item.medicationIngredients }} </td>
+                    <td>{{ item.medicationDose }} </td>
                     <td><router-link :to="{name: 'EditItem', params: { id: item._id }}" class="btn btn-primary">Edit</router-link></td>
                     <td><button class="btn btn-danger" v-on:click="deleteItem(item._id)">Delete</button></td>
                 </tr>

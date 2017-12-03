@@ -17,6 +17,26 @@
               <input type="text" class="form-control col-md-6" v-model="item.price" />
             </div>
           </div>
+        </div>
+        <div class="form-group">
+            <label>Type</label>
+            <input type="text" class="form-control" v-model="item.type">
+        </div>
+        <div class="form-group">
+            <label>Assv. Ref</label>
+            <input type="text" class="form-control" v-model="item.assistiveReference">
+        </div>
+        <div class="form-group">
+            <label>PZN</label>
+            <input type="text" class="form-control" v-model="item.medicationPznNumber">
+        </div>
+        <div class="form-group">
+            <label>Ingredients</label>
+            <input type="text" class="form-control" v-model="item.medicationIngredients">
+        </div>
+        <div class="form-group">
+            <label>Dose</label>
+            <input type="text" class="form-control" v-model="item.medicationDose">
         </div><br />
         <div class="form-group">
           <button class="btn btn-primary">Add Item</button>
