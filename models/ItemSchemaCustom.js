@@ -13,15 +13,6 @@ module.exports = {
     },
     assistiveReference: {
         type: String
-    },
-    medicationPznNumber: {
-        type: Number
-    },
-    medicationIngredients: {
-        type: String
-    },
-    medicationDose: {
-        type: String
     }
 };
 
